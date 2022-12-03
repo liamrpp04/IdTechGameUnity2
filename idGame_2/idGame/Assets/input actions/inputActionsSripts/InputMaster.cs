@@ -53,15 +53,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""EnableLook"",
-                    ""type"": ""Button"",
-                    ""id"": ""5db9990f-3523-4465-b701-0afde56bc799"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -273,17 +264,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a4fa9bca-bcfd-4562-aee2-04369085b240"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""EnableLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -295,7 +275,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         m_Player_Movment = m_Player.FindAction("Movment", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_EnableLook = m_Player.FindAction("EnableLook", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -358,7 +337,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movment;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_EnableLook;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -366,7 +344,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         public InputAction @Movment => m_Wrapper.m_Player_Movment;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @EnableLook => m_Wrapper.m_Player_EnableLook;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -385,9 +362,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @EnableLook.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableLook;
-                @EnableLook.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableLook;
-                @EnableLook.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableLook;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -401,9 +375,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @EnableLook.started += instance.OnEnableLook;
-                @EnableLook.performed += instance.OnEnableLook;
-                @EnableLook.canceled += instance.OnEnableLook;
             }
         }
     }
@@ -413,6 +384,5 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         void OnMovment(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnEnableLook(InputAction.CallbackContext context);
     }
 }

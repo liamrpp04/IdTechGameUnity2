@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private bool isGrounded;
     private bool isHoldingJump;
-    [SerializeField] private ToolObject[] tools;
-    private ToolObject selectedTool;
+    [SerializeField] private ItemInHand[] tools;
+    private ItemInHand selectedTool;
     #endregion
     #region SerializeFielded vals
     [SerializeField] [Range(-1000, 1000)] private float movementSpeed = 100f;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         Instance = this;
         controls = new InputMaster();
         controller = GetComponent<CharacterController>();
-        tools = GetComponentsInChildren<ToolObject>(true);
+        tools = GetComponentsInChildren<ItemInHand>(true);
     }
     private void OnEnable()
     {
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SwitchTool(ToolType toolType)
+    public void SwitchTool(ItemType toolType)
     {
         //Debug.Log(toolType.ToString());
         if (selectedTool != null) selectedTool.gameObject.SetActive(false);

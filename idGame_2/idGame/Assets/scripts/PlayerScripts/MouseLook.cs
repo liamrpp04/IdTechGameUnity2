@@ -37,7 +37,6 @@ public class MouseLook : MonoBehaviour
     }
     private void Look()
     {
-        if (!controls.Player.EnableLook.IsPressed()) return;
         mouseLook = controls.Player.Look.ReadValue<Vector2>();
         float mouseX = mouseLook.x * mouseSensetivity * Time.deltaTime;
         float mouseY = mouseLook.y * mouseSensetivity * Time.deltaTime;

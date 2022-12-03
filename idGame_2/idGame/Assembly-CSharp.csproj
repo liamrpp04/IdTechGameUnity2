@@ -62,7 +62,7 @@
     <Compile Include="Assets\scripts\Level1Manager.cs" />
     <Compile Include="Assets\scripts\PlayerScripts\MouseLook.cs" />
     <Compile Include="Assets\scripts\ScriptableObjects\ItemData.cs" />
-    <Compile Include="Assets\scripts\ToolObject.cs" />
+    <Compile Include="Assets\scripts\Inventory\itemInhand.cs" />
     <Compile Include="Assets\scripts\PlayerScripts\CollectableItem.cs" />
     <Compile Include="Assets\scripts\SoundManager.cs" />
     <Compile Include="Assets\scripts\StepsSound.cs" />

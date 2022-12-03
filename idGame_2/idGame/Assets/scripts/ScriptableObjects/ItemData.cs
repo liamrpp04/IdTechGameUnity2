@@ -12,7 +12,7 @@ public class ItemData : ScriptableObject
 
     #endregion
     #region Public vals
-    public ToolType toolType = ToolType.None;
+    public ItemType toolType = ItemType.None;
     public string itemName;
     public Sprite itemSprite;
     public Color itemColor = Color.white;

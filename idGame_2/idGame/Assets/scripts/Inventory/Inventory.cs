@@ -10,7 +10,7 @@ public class Inventory
     {
         if (items.TryGetValue(itemData, out InventoryItem item))
         {
-            if (item.data.toolType != ToolType.None) return;
+            if (item.data.toolType != ItemType.None) return;
             item.AddToStack();
             //GameplayUI.ToolsBar.Add(item);
             GamplayInvetory.Instance.UpdateSlotStack(item);

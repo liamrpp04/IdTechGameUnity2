@@ -9,7 +9,7 @@ public class SlotUI : MonoBehaviour
 {
     #region Private vals
     bool isSelected;
-    //private ToolType toolType = ToolType.None;
+    
     public InventoryItem Item { get; private set; }
 
     private static Color32 selectedColor = Color.white;
@@ -72,7 +72,7 @@ public class SlotUI : MonoBehaviour
     {
         if (Item == null)
         {
-            PlayerController.Instance.SwitchTool(ToolType.None);
+            PlayerController.Instance.SwitchTool(ItemType.None);
             return;
         }
         PlayerController.Instance.SwitchTool(Item.data.toolType);
