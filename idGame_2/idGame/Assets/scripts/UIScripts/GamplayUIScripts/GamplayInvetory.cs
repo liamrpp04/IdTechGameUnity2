@@ -27,6 +27,7 @@ public class GamplayInvetory : MonoBehaviour
 
     private void Update()
     {
+        if (!PlayerController.ControlEnabled) return;
         //float scroll = Input.mouseScrollDelta.y;
         float scroll = Mouse.current.scroll.ReadValue().normalized.y;
         if (scroll > 0)

@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
+    public static bool ControlEnabled = true;
     #region Private vals
     private InputMaster controls;
     private Vector3 velocity;
@@ -41,8 +42,25 @@ public class PlayerController : MonoBehaviour
     {
         controls.Disable();
     }
+    public static void SetControl(bool value) => ControlEnabled = value;
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Fire"))
+        {
+            PlayerStateUI.Instance.TakeDamage(0.5f);
+            return;
+        }
+
+        if (other.CompareTag("MonsterDamage"))
+        {
+            PlayerStateUI.Instance.TakeDamage();
+            return;
+        }
+    }
     private void Update()
     {
+        if (!ControlEnabled) return;
         Gravity();
         PlayerMovement();
         Jump();
@@ -54,7 +72,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-
             if (selectedTool != null)
                 selectedTool.Attack();
         }
@@ -76,7 +93,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = (move.y * transform.forward) + (move.x * transform.right);
         if (movement.normalized.sqrMagnitude < 0.01f)
         {
-            transform.GetChild(0).GetComponent<Animator>().SetBool("Running", false);
+            MouseLook.Instance.Running(false);
             StepsSound.StopSteps();
             return;
         }
@@ -85,12 +102,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             targetSpeed *= 2;
-            transform.GetChild(0).GetComponent<Animator>().SetBool("Running", true);
+            MouseLook.Instance.Running(true);
             StepsSound.PlaySteps(0.3f);
         }
         else
         {
-            transform.GetChild(0).GetComponent<Animator>().SetBool("Running", false);
+            MouseLook.Instance.Running(false);
             StepsSound.PlaySteps(0.7f);
 
         }
@@ -128,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     public void SwitchTool(ToolType toolType)
     {
-        Debug.Log(toolType.ToString());
+        //Debug.Log(toolType.ToString());
         if (selectedTool != null) selectedTool.gameObject.SetActive(false);
 
         foreach (var item in tools)

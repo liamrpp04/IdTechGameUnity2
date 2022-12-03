@@ -1,7 +1,8 @@
 using UnityEngine;
-
+using ProjectUtils;
 public class MouseLook : MonoBehaviour
 {
+    public static MouseLook Instance;
     #region Private vals
     private InputMaster controls;
     private Vector2 mouseLook;
@@ -10,15 +11,28 @@ public class MouseLook : MonoBehaviour
     #region SerializeFielded vals
     [SerializeField] [Range(0, 1000)] private float mouseSensetivity = 100f;
     [SerializeField] private Transform playerBody;
+    [SerializeField] private Animator camAnim;
     #endregion
     private void Awake()
     {
         controls = new InputMaster();
-        Cursor.lockState= CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+        Instance = this;
     }
+
+    public void Running(bool value) => camAnim.SetBool("Running", value);
+
+    public void Shake(float shakeTime = 0.4f)
+    {
+        camAnim.SetBool("Shaking", true);
+        this.ActionAfterTime(shakeTime, StopShake);
+    }
+    public void StopShake() => camAnim.SetBool("Shaking", false);
+
     private void Update()
     {
+        if (!PlayerController.ControlEnabled) return;
         Look();
     }
     private void Look()

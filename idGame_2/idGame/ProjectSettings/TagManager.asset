@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CollectableItem
   - Tool
+  - Fire
+  - MonsterDamage
   layers:
   - Default
   - TransparentFX
