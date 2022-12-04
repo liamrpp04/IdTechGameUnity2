@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType
-{
-    None,
-    PickAxe,
-    Axe
-}
-
-[RequireComponent(typeof(Animator))]
 public class ItemInHand : MonoBehaviour
 {
     public ItemType type;
@@ -23,6 +15,7 @@ public class ItemInHand : MonoBehaviour
 
     public void Attack()
     {
+        if (anim == null) return;
         anim.SetTrigger("Attack");
     }
 }

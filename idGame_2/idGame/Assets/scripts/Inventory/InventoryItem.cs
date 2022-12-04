@@ -13,13 +13,13 @@ public class InventoryItem
         AddToStack();
     }
 
-    public void AddToStack()
+    public void AddToStack(int amount = 1)
     {
-        stackSize++;
+        stackSize += amount;
     }
 
-    public void RemoveFromStack()
+    public void RemoveFromStack(int amount = 1)
     {
-        stackSize--;
+        stackSize -= amount;
     }
 }

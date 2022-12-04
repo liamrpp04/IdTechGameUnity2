@@ -7,17 +7,21 @@ public class MouseLook : MonoBehaviour
     private InputMaster controls;
     private Vector2 mouseLook;
     private float Xrotation = 0;
+    Interactable currentInteraction;
     #endregion
     #region SerializeFielded vals
     [SerializeField] [Range(0, 1000)] private float mouseSensetivity = 100f;
     [SerializeField] private Transform playerBody;
     [SerializeField] private Animator camAnim;
+
+    [SerializeField] private float interactableRayDistance;
+    [SerializeField] private LayerMask interactableMask;
     #endregion
     private void Awake()
     {
         controls = new InputMaster();
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Instance = this;
     }
 
@@ -34,6 +38,7 @@ public class MouseLook : MonoBehaviour
     {
         if (!PlayerController.ControlEnabled) return;
         Look();
+        InteractionDetection();
     }
     private void Look()
     {
@@ -56,5 +61,51 @@ public class MouseLook : MonoBehaviour
     }
 
 
+    void InteractionDetection()
+    {
+        bool interactionFound = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, interactableRayDistance, interactableMask);
 
+        if (interactionFound)
+        {
+            Interactable newInteraction = hit.transform.GetComponentInParent<Interactable>();
+            if (!newInteraction.enabled)
+            {
+                currentInteraction = null;
+                return;
+            }
+
+            if (currentInteraction != newInteraction)
+            {
+                Debug.Log("New interaction found!");
+                currentInteraction = newInteraction;
+                //GameplayUI.Instance.lootLabel.Show(currentLoot.data.displayName);
+                InteractionUI.ShowInteraction(currentInteraction);
+            }
+
+            if (Input.GetKeyDown(currentInteraction.keyToPress))
+            {
+                //Debug.Log($"{currentLoot.data.displayName} obtained");
+                //currentLoot.Loot();
+                //...
+                currentInteraction.Evaluate();
+                currentInteraction = null;
+
+            }
+        }
+        else
+        {
+            if (currentInteraction != null)
+            {
+                //GameplayUI.Instance.lootLabel.Hide();
+                InteractionUI.Hide();
+                currentInteraction = null;
+            }
+        }
+
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * interactableRayDistance);
+    }
 }

@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class TriggerDetector : MonoBehaviour
 {
-    [SerializeField] private UnityEvent OnEnter;
     [SerializeField] private string targetTag = "Player";
+    [SerializeField] private UnityEvent OnEnter;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(targetTag))

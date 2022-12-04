@@ -10,9 +10,9 @@ public class Inventory
     {
         if (items.TryGetValue(itemData, out InventoryItem item))
         {
-            if (item.data.toolType != ItemType.None) return;
+            if (!itemData.isStackable) return;
+
             item.AddToStack();
-            //GameplayUI.ToolsBar.Add(item);
             GamplayInvetory.Instance.UpdateSlotStack(item);
         }
         else
@@ -20,21 +20,27 @@ public class Inventory
             InventoryItem newItem = new InventoryItem(itemData);
             items.Add(itemData, newItem);
             GamplayInvetory.Instance.AddToIventory(newItem);
-
-            //GameplayUI.ToolsBar.Add(newItem);
-
         }
     }
 
-    public static void Remove(ItemData itemData)
+    public static void Remove(ItemData itemData, int amount = 1)
     {
+        if (amount <= 0) return;
+
         if (items.TryGetValue(itemData, out InventoryItem item))
         {
-            item.RemoveFromStack();
-            if (item.stackSize == 0)
+            item.RemoveFromStack(amount);
+            if (item.stackSize <= 0)
             {
                 items.Remove(itemData);
             }
         }
+    }
+
+    public static InventoryItem Get(ItemData itemData)
+    {
+        if (items.TryGetValue(itemData, out InventoryItem item)) return item;
+
+        return null;
     }
 }

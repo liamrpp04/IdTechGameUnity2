@@ -75,6 +75,6 @@ public class SlotUI : MonoBehaviour
             PlayerController.Instance.SwitchTool(ItemType.None);
             return;
         }
-        PlayerController.Instance.SwitchTool(Item.data.toolType);
+        PlayerController.Instance.SwitchTool(Item.data.itemType);
     }
 }

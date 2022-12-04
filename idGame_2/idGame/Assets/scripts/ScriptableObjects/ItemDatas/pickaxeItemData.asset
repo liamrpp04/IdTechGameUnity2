@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b0ccd52c4949f4da027985b2d157ec, type: 3}
   m_Name: pickaxeItemData
   m_EditorClassIdentifier: 
-  toolType: 1
+  itemType: 1
   itemName: Pickaxe
-  itemSprite: {fileID: 21300000, guid: 3a0c527d7f890d64a9b56b086e6e766a, type: 3}
+  itemSprite: {fileID: 21300000, guid: a113eddf582b9dd478740df9cd7d8f5e, type: 3}
   itemColor: {r: 1, g: 1, b: 1, a: 1}
+  isStackable: 0

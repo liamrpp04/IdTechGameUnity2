@@ -1,6 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum ItemType
+{
+    None,
+    PickAxe,
+    Axe,
+    Key
+}
+
 [CreateAssetMenu(fileName = "ItemData", menuName = "ItemDatas/ItemData")]
 public class ItemData : ScriptableObject
 {
@@ -12,10 +20,11 @@ public class ItemData : ScriptableObject
 
     #endregion
     #region Public vals
-    public ItemType toolType = ItemType.None;
+    public ItemType itemType = ItemType.None;
     public string itemName;
     public Sprite itemSprite;
     public Color itemColor = Color.white;
+    public bool isStackable;
     //public string itemType;
     #endregion
 }
