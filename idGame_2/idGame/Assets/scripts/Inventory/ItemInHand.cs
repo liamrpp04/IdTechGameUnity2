@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class ItemInHand : MonoBehaviour
 {
+    #region Private vals
+    private Animator anim;
+    #endregion
+    #region Public vals
     public ItemType type;
     public float power = 20;
-    private Animator anim;
-
+    #endregion
     private void OnEnable()
     {
         if (!anim) anim = GetComponent<Animator>();
     }
 
-    public void Attack()
+    public void ToolAnimation()
     {
         if (anim == null) return;
-        anim.SetTrigger("Attack");
+        anim.SetTrigger("ToolAnimation");
     }
 }

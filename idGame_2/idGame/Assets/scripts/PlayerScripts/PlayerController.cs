@@ -3,8 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance;
-    public static bool ControlEnabled = true;
+    
     #region Private vals
     private InputMaster controls;
     private Vector3 velocity;
@@ -12,8 +11,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private bool isGrounded;
     private bool isHoldingJump;
-    [SerializeField] private ItemInHand[] tools;
-    private ItemInHand selectedTool;
+    [SerializeField] private ItemInHand[] items;
+    private ItemInHand selectedItem;
     #endregion
     #region SerializeFielded vals
     [SerializeField] [Range(-1000, 1000)] private float movementSpeed = 100f;
@@ -26,13 +25,15 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float distanceToGround = 0.4f;
     public LayerMask groundMask;
+    public static PlayerController Instance;
+    public static bool ControlEnabled = true;
     #endregion
     private void Awake()
     {
         Instance = this;
         controls = new InputMaster();
         controller = GetComponent<CharacterController>();
-        tools = GetComponentsInChildren<ItemInHand>(true);
+        items = GetComponentsInChildren<ItemInHand>(true);
     }
     private void OnEnable()
     {
@@ -72,8 +73,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (selectedTool != null)
-                selectedTool.Attack();
+            if (selectedItem != null)
+                selectedItem.ToolAnimation();
         }
     }
 
@@ -143,17 +144,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SwitchTool(ItemType toolType)
+    public void SwitchTool(ItemType itemType)
     {
-        //Debug.Log(toolType.ToString());
-        if (selectedTool != null) selectedTool.gameObject.SetActive(false);
+        //Debug.Log(itemType.ToString());
+        if (selectedItem != null) selectedItem.gameObject.SetActive(false);
 
-        foreach (var item in tools)
+        foreach (var item in items)
         {
-            if (item.type == toolType)
+            if (item.type == itemType)
             {
                 item.gameObject.SetActive(true);
-                selectedTool = item;
+                selectedItem = item;
                 return;
             }
             //item.gameObject.SetActive(false);

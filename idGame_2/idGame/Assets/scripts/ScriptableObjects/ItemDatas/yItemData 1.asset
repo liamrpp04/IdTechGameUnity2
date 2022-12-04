@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b0ccd52c4949f4da027985b2d157ec, type: 3}
   m_Name: yItemData 1
   m_EditorClassIdentifier: 
+  itemType: 1
   itemName: y
   itemSprite: {fileID: 0}
   itemColor: {r: 0.9568628, g: 0.9921569, b: 0.15294118, a: 1}
+  isStackable: 0

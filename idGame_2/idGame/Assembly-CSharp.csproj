@@ -55,40 +55,40 @@
   <ItemGroup>
     <Compile Include="Assets\scripts\PaletDamaged\PaletDamaged.cs" />
     <Compile Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_CustomWind.cs" />
-    <Compile Include="Assets\scripts\Monster.cs" />
-    <Compile Include="Assets\scripts\TriggerDetector.cs" />
+    <Compile Include="Assets\scripts\MonsterScripts\Monster.cs" />
+    <Compile Include="Assets\scripts\ProjectUtils\TriggerDetector.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\scripts\PaletDamaged\BoxDamaged.cs" />
-    <Compile Include="Assets\scripts\Level1Manager.cs" />
+    <Compile Include="Assets\scripts\LevelManagers\Level1Manager.cs" />
     <Compile Include="Assets\scripts\PlayerScripts\MouseLook.cs" />
     <Compile Include="Assets\scripts\ScriptableObjects\ItemData.cs" />
     <Compile Include="Assets\scripts\Inventory\ItemInHand.cs" />
     <Compile Include="Assets\scripts\PlayerScripts\CollectableItem.cs" />
-    <Compile Include="Assets\scripts\SoundManager.cs" />
-    <Compile Include="Assets\scripts\StepsSound.cs" />
-    <Compile Include="Assets\scripts\PlayerStateUI.cs" />
+    <Compile Include="Assets\scripts\SoundScripts\SoundManager.cs" />
+    <Compile Include="Assets\scripts\SoundScripts\StepsSound.cs" />
+    <Compile Include="Assets\scripts\UIScripts\GamplayUIScripts\PlayerStateUI.cs" />
     <Compile Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_Utils.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
-    <Compile Include="Assets\scripts\CoroutineUtils.cs" />
+    <Compile Include="Assets\scripts\ProjectUtils\CoroutineUtils.cs" />
     <Compile Include="Assets\scripts\PlayerScripts\PickupItems.cs" />
     <Compile Include="Assets\packages\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\scripts\Interactable.cs" />
+    <Compile Include="Assets\scripts\PlayerScripts\Interactable.cs" />
     <Compile Include="Assets\scripts\UIScripts\GamplayUIScripts\GamplayInvetory.cs" />
     <Compile Include="Assets\scripts\UIScripts\GamplayUIScripts\ObjectivesUI.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\input actions\inputActionsSripts\InputMaster.cs" />
     <Compile Include="Assets\scripts\Inventory\Inventory.cs" />
-    <Compile Include="Assets\scripts\OnObjectEnabled.cs" />
+    <Compile Include="Assets\scripts\ProjectUtils\OnObjectEnabled.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\GunShoot.cs" />
     <Compile Include="Assets\scripts\UIScripts\InventoryUIScripts\InventoryUI.cs" />
+    <Compile Include="Assets\scripts\UIScripts\GamplayUIScripts\InteractionUI.cs" />
     <Compile Include="Assets\scripts\ScriptableObjects\SoundData.cs" />
     <Compile Include="Assets\scripts\UIScripts\GamplayUIScripts\SlotUI.cs" />
     <Compile Include="Assets\scripts\PlayerScripts\PlayerController.cs" />
     <Compile Include="Assets\scripts\Inventory\InventoryItem.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\GunAim.cs" />
-    <Compile Include="Assets\scripts\UIScripts\InteractionUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
@@ -396,6 +396,12 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
