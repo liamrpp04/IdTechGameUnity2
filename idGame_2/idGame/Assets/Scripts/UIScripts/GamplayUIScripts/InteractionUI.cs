@@ -14,7 +14,6 @@ public class InteractionUI : MonoBehaviour
         Hide();
     }
 
-    public static void ShowInteraction(KeyCode keyInput, string actionDescription) => Show($"Press {keyInput.ToString()} to {actionDescription}");
     public static void ShowInteraction(Interactable interactable) => Show($"Press {interactable.keyToPress.ToString()} to {interactable.description}");
 
     public static void Show(string message)

@@ -32,6 +32,7 @@ public class PlayerStateUI : MonoBehaviour
 
     public void TakeDamage(float amount = 1f)
     {
+        if (!PlayerController.ControlEnabled) return;
         if (!_damageAllowed) return;
         _damageAllowed = false;
         MouseLook.Instance.Shake();

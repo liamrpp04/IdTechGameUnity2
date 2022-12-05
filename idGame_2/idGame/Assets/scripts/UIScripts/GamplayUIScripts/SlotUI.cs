@@ -36,8 +36,17 @@ public class SlotUI : MonoBehaviour
         itemIcon.sprite = itemData.data.itemSprite;
         itemIcon.color = itemData.data.itemColor;
         isSlotEmpty = false;
-        //toolType = itemData.data.toolType;
         Item = itemData;
+        if (isSelected) CheckTool();
+    }
+
+    public void Empty()
+    {
+        itemIcon.gameObject.SetActive(false);
+        itemIcon.sprite = null;
+        itemIcon.color = Color.white;
+        isSlotEmpty = true;
+        Item = null;
         if (isSelected) CheckTool();
     }
 
@@ -72,9 +81,9 @@ public class SlotUI : MonoBehaviour
     {
         if (Item == null)
         {
-            PlayerController.Instance.SwitchTool(ItemType.None);
+            PlayerController.Instance.SwitchTool(null);
             return;
         }
-        PlayerController.Instance.SwitchTool(Item.data.itemType);
+        PlayerController.Instance.SwitchTool(Item.data);
     }
 }

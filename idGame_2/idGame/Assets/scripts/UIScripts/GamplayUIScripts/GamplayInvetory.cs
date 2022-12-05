@@ -79,8 +79,23 @@ public class GamplayInvetory : MonoBehaviour
         {
             if (slots[i].isSlotEmpty)
             {
-                slots[i].ShowItemIcon(item); break;
+                slots[i].ShowItemIcon(item); return;
             }
+        }
+    }
+
+    public void Remove(InventoryItem item)
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].isSlotEmpty) continue;
+
+            if (slots[i].Item == item)
+            {
+                slots[i].Empty();
+                return;
+            }
+
         }
     }
 

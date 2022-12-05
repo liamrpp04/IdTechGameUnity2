@@ -33,7 +33,11 @@ public class Inventory
             if (item.stackSize <= 0)
             {
                 items.Remove(itemData);
+                GamplayInvetory.Instance.Remove(item);
             }
+            else
+                GamplayInvetory.Instance.UpdateSlotStack(item);
+
         }
     }
 

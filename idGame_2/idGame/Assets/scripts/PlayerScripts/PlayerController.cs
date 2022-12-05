@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
     #region Private vals
     private InputMaster controls;
     private Vector3 velocity;
@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isHoldingJump;
     [SerializeField] private ItemInHand[] items;
-    private ItemInHand selectedItem;
+    [HideInInspector] public ItemInHand selectedItem;
     #endregion
     #region SerializeFielded vals
     [SerializeField] [Range(-1000, 1000)] private float movementSpeed = 100f;
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             if (selectedItem != null)
-                selectedItem.ToolAnimation();
+                selectedItem.UseItem();
         }
     }
 
@@ -144,14 +144,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SwitchTool(ItemType itemType)
+    public void SwitchTool(ItemData itemData)
     {
         //Debug.Log(itemType.ToString());
         if (selectedItem != null) selectedItem.gameObject.SetActive(false);
 
-        foreach (var item in items)
+        if (itemData == null)
         {
-            if (item.type == itemType)
+            selectedItem = null;
+            return;
+        }
+
+        foreach (ItemInHand item in items)
+        {
+            if (item.data == itemData)
             {
                 item.gameObject.SetActive(true);
                 selectedItem = item;

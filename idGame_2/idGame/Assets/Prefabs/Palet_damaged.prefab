@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 8539642865739414628}
   - component: {fileID: 4112788074976896104}
   - component: {fileID: 5625029779838030147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Palet_damaged
   m_TagString: Untagged
   m_Icon: {fileID: 0}

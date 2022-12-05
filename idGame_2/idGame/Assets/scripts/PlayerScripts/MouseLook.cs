@@ -87,8 +87,9 @@ public class MouseLook : MonoBehaviour
                 //Debug.Log($"{currentLoot.data.displayName} obtained");
                 //currentLoot.Loot();
                 //...
-                currentInteraction.Evaluate();
+                currentInteraction.Evaluate(PlayerController.Instance.selectedItem);
                 currentInteraction = null;
+                InteractionUI.Hide();
 
             }
         }
