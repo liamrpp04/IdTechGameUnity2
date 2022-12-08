@@ -8,6 +8,8 @@ TagManager:
   - Tool
   - Fire
   - MonsterDamage
+  - Tool Axe
+  - Tool PickAxe
   layers:
   - Default
   - TransparentFX

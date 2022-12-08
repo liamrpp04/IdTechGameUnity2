@@ -45,6 +45,7 @@ public class StepsSound : MonoBehaviour
 
     void Update()
     {
+        if (!PlayerController.ControlEnabled) return;
         if (!IsPlaying) return;
 
         time -= Time.deltaTime;

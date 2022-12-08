@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoxDamaged : MonoBehaviour
 {
+    [SerializeField] private string targetTag = "Tool Axe";
     [SerializeField] private Texture2D damaged_1;
     [SerializeField] private Texture2D damaged_2;
 
@@ -11,7 +12,7 @@ public class BoxDamaged : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Tool"))
+        if (other.CompareTag(targetTag))
         {
             damageAllowed--;
             Material mat = new Material(GetComponent<MeshRenderer>().sharedMaterial);
