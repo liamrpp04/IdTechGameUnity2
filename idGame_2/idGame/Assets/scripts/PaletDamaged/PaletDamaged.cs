@@ -19,6 +19,11 @@ public class PaletDamaged : MonoBehaviour
             index += 1;
             transform.GetChild(index).gameObject.SetActive(true);
         }
+        else
+        {
+            if (other.tag.StartsWith("Tool "))
+                ShortPopupUI.Show("You need an Axe to destroy this object");
+        }
     }
 
     //private void OnCollisionEnter(Collision collision)

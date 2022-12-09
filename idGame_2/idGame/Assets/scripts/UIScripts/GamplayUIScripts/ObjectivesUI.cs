@@ -23,7 +23,9 @@ public class ObjectivesUI : MonoBehaviour
     public static void Show(Action OnComplete = null) => Instance._Show(OnComplete);
     public static void Hide(Action OnComplete = null) => Instance._Hide(OnComplete);
     public static void AddObjective(string id, string text) => Instance._AddObjective(id, text);
+    public static void AddObjective(string text) => Instance._AddObjective(text, text); // the id is the text itself
     public static void CompleteObjective(string id, Action OnComplete = null) => Instance._CompleteObjective(id, OnComplete);
+    public static void CompleteObjective(string id) => Instance._CompleteObjective(id, null);
     public static void Clear() => Instance._Clear();
 
     public void _Show(Action OnComplete = null)
@@ -40,6 +42,7 @@ public class ObjectivesUI : MonoBehaviour
 
     public void _AddObjective(string id, string text)
     {
+        if (objectives.ContainsKey(id)) return;
         var newTask = Instantiate(textRef, content);
         newTask.text = "* "+ text;
         newTask.gameObject.SetActive(true);

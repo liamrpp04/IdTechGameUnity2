@@ -61,12 +61,30 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (!ControlEnabled) return;
+        ScapeMenuCheck();
+
+        if (!ControlEnabled)
+        {
+            MouseLook.Instance.Running(false);
+            return;
+        }
         Gravity();
         PlayerMovement();
         Jump();
 
         PlayerAction();
+    }
+
+    private void ScapeMenuCheck()
+    {
+        if (controls.Player.Pause.WasPressedThisFrame())
+        {
+            if (!PauseUI.IsShown)
+                PauseUI.Show();
+            else
+                PauseUI.Hide();
+
+        }
     }
 
     void PlayerAction()

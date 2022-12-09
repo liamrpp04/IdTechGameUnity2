@@ -56,6 +56,7 @@
     <Compile Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\Editor\CTI_DetailsEnum.cs" />
     <Compile Include="Assets\packages\EffectExamples\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
     <Compile Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\Editor\CTI_ShaderGUI.cs" />
+    <Compile Include="Assets\packages\ReachableGames\PostLinerFree\Editor\AssetsPopup.cs" />
     <Compile Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\Editor\CTI_AdvancedEdgeFluttering.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,9 @@ public class MouseLook : MonoBehaviour
     Interactable currentInteraction;
     #endregion
     #region SerializeFielded vals
-    [SerializeField] [Range(0, 1000)] private float mouseSensetivity = 100f;
+    //[SerializeField] [Range(0, 1000)] private float mouseSensetivity = 100f;
+    [SerializeField] private float minSensitivity = 2;
+    [SerializeField] private float maxSensitivity = 15;
     [SerializeField] private Transform playerBody;
     [SerializeField] private Animator camAnim;
 
@@ -43,8 +45,9 @@ public class MouseLook : MonoBehaviour
     private void Look()
     {
         mouseLook = controls.Player.Look.ReadValue<Vector2>();
-        float mouseX = mouseLook.x * mouseSensetivity * Time.deltaTime;
-        float mouseY = mouseLook.y * mouseSensetivity * Time.deltaTime;
+        float sensitivity = Mathf.Lerp(minSensitivity, maxSensitivity, Options.CameraSensitivity);
+        float mouseX = mouseLook.x * sensitivity * Time.deltaTime;
+        float mouseY = mouseLook.y * sensitivity * Time.deltaTime;
         Xrotation -= mouseY;
         Xrotation = Mathf.Clamp(Xrotation, -90, 90);
         transform.localRotation = Quaternion.Euler(Xrotation, 0, 0);

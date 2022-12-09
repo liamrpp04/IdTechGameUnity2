@@ -12,7 +12,7 @@ public class Monster : MonoBehaviour
     private void Update()
     {
         float distToTarget = Vector3.Distance(transform.position, target.position);
-        if (distToTarget < 3.5f)
+        if (distToTarget < 2.5f)
         {
             agent.isStopped = true;
             // ToolAnimation

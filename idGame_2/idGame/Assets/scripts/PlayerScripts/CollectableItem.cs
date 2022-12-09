@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollectableItem : MonoBehaviour
 {
     #region Private vals
-
+    [SerializeField] private UnityEngine.Events.UnityEvent OnCollet;
     #endregion
     #region SerializeFielded vals
 
@@ -17,6 +17,7 @@ public class CollectableItem : MonoBehaviour
     public ItemData CollectItem()
     {
         Destroy(gameObject);
+        OnCollet?.Invoke();
         return itemData;
     }
 }

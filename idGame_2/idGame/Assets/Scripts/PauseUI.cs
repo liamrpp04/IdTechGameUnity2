@@ -7,9 +7,12 @@ public class PauseUI : MonoBehaviour
 {
     public static PauseUI Instance;
 
+    public static bool IsShown { get; set; }
+
     [SerializeField] private Canvas canvas;
 
     [SerializeField] private Button btnResume;
+    [SerializeField] private Button btnControls;
     [SerializeField] private Button btnOptions;
     [SerializeField] private Button btnMainMenu;
     [SerializeField] private Button btnExit;
@@ -25,12 +28,20 @@ public class PauseUI : MonoBehaviour
     {
         btnResume.onClick.AddListener(() =>
         {
-
+            Hide();
+        });
+        btnControls.onClick.AddListener(() =>
+        {
+            // Open menu options
+            ControlsUI.Show();
+            OptionsUI.Hide();
         });
         btnOptions.onClick.AddListener(() =>
         {
             // Open menu options
             OptionsUI.Show();
+            ControlsUI.Hide();
+
         });
 
         btnMainMenu.onClick.AddListener(() =>
@@ -42,13 +53,23 @@ public class PauseUI : MonoBehaviour
 
     public static void Show()
     {
+        IsShown = true;
         Instance.canvas.enabled = true;
         Time.timeScale = 0;
+        PlayerController.ControlEnabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public static void Hide()
     {
+        IsShown = false;
         Time.timeScale = 1;
         Instance.canvas.enabled = false;
+        PlayerController.ControlEnabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         OptionsUI.Hide();
+        ControlsUI.Hide();
     }
 }

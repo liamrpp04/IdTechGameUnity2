@@ -7,6 +7,7 @@ public class BoxDamaged : MonoBehaviour
     [SerializeField] private string targetTag = "Tool Axe";
     [SerializeField] private Texture2D damaged_1;
     [SerializeField] private Texture2D damaged_2;
+    [SerializeField] private ItemData itemData;
 
     int damageAllowed = 3;
 
@@ -31,8 +32,19 @@ public class BoxDamaged : MonoBehaviour
             else
             {
                 Destroy(gameObject);
+                if (itemData != null)
+                    Inventory.Add(itemData);
             }
             SoundManager.PlayOneShot("box_damaged", 0.5f);
+        }
+        else
+        {
+            if (other.tag.StartsWith("Tool "))
+            {
+                string toolName = targetTag.Replace("Tool ", "");
+                string text = (toolName.StartsWith("A") || toolName.StartsWith("a")) ? "an " + toolName : "a " + toolName;
+                ShortPopupUI.Show($"You need {text} to destroy this object");
+            }
         }
     }
 }

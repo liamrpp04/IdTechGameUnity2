@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private Button btnPlay;
+    [SerializeField] private Button btnControls;
     [SerializeField] private Button btnOptions;
     [SerializeField] private Button btnExit;
 
@@ -19,13 +20,25 @@ public class MainMenuUI : MonoBehaviour
     {
         btnPlay.onClick.AddListener(() =>
         {
-            ChangeSceneUI.ChangeScene("Level 1");
+            ChangeSceneUI.ChangeScene("Level 1", () =>
+            {
+                OptionsUI.Hide();
+                ControlsUI.Hide();
+            });
+
+        });
+        btnControls.onClick.AddListener(() =>
+        {
+            // Open menu options
+            ControlsUI.Show();
             OptionsUI.Hide();
         });
         btnOptions.onClick.AddListener(() =>
         {
             // Open menu options
             OptionsUI.Show();
+            ControlsUI.Hide();
+
         });
         btnExit.onClick.AddListener(Application.Quit);
     }
