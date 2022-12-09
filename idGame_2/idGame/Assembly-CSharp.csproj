@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,12 +53,12 @@
     <UnityVersion>2021.2.7f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\packages\ReachableGames\PostLinerFree\PostLinerRenderer.cs" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Scripts\PaletDamaged\PaletDamaged.cs" />
     <Compile Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_CustomWind.cs" />
     <Compile Include="Assets\Scripts\MonsterScripts\Monster.cs" />
-    <Compile Include="Assets\packages\ReachableGames\PostLinerFree\PostLinerFree.cs" />
-    <Compile Include="Assets\packages\ReachableGames\PostLinerFree\testScenes\CheesyHeadTracking.cs" />
     <Compile Include="Assets\Scripts\ProjectUtils\TriggerDetector.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\Scripts\ChangeSceneUI.cs" />
@@ -82,11 +82,9 @@
     <Compile Include="Assets\Scripts\UIScripts\GamplayUIScripts\ObjectivesUI.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\Scripts\PauseUI.cs" />
-    <Compile Include="Assets\packages\ReachableGames\PostLinerFree\testScenes\FlyCamera.cs" />
-    <Compile Include="Assets\Input actions\InputActionsSripts\InputMaster.cs" />
+    <Compile Include="Assets\input actions\inputActionsSripts\InputMaster.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\ProjectUtils\OnObjectEnabled.cs" />
-    <Compile Include="Assets\packages\ReachableGames\PostLinerFree\PostLinerOutline.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\GunShoot.cs" />
     <Compile Include="Assets\Scripts\PlayableDirectorListeners.cs" />
@@ -94,12 +92,10 @@
     <Compile Include="Assets\Scripts\MainMenuUI.cs" />
     <Compile Include="Assets\Scripts\UIScripts\GamplayUIScripts\InteractionUI.cs" />
     <Compile Include="Assets\Scripts\UIScripts\GamplayUIScripts\ShortPopupUI.cs" />
-    <Compile Include="Assets\Scripts\ControlsUI.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\SoundData.cs" />
     <Compile Include="Assets\Scripts\OptionsUI.cs" />
     <Compile Include="Assets\Scripts\UIScripts\GamplayUIScripts\SlotUI.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
-    <Compile Include="Assets\packages\ReachableGames\PostLinerFree\testScenes\IfMissingPackageShow.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryItem.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\GunAim.cs" />
   </ItemGroup>
@@ -112,7 +108,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\packages\ReachableGames\PostLinerFree\PostLiner_ThirdPartyNotices.txt" />
     <None Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Resources\CTI_Internal-DeferredShading.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\Includes\CTI_BillboardVertex_301.cginc" />
@@ -131,7 +126,6 @@
     <None Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Leaves_301.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\packages\Survival Tools\ReadMe\ReadMe.txt" />
-    <None Include="Assets\packages\ReachableGames\PostLinerFree\Resources\PostLinerFree.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\Includes\CTI_Builtin4xTreeLibraryTumbling_301.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
@@ -412,6 +406,12 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
