@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\UIScripts\MenuScripts\PauseUI.cs" />
     <Compile Include="Assets\packages\ReachableGames\PostLinerFree\testScenes\FlyCamera.cs" />
     <Compile Include="Assets\input actions\inputActionsSripts\InputMaster.cs" />
+    <Compile Include="Assets\Scripts\LevelManagers\Level2Manager.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\ProjectUtils\OnObjectEnabled.cs" />
     <Compile Include="Assets\packages\ReachableGames\PostLinerFree\PostLinerOutline.cs" />
