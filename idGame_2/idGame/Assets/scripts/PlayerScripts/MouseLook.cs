@@ -21,10 +21,14 @@ public class MouseLook : MonoBehaviour
     #endregion
     private void Awake()
     {
+        if (Instance != null)
+        {
+            return;
+        }
+        Instance = this;
         controls = new InputMaster();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Instance = this;
     }
 
     public void Running(bool value) => camAnim.SetBool("Running", value);
@@ -55,12 +59,12 @@ public class MouseLook : MonoBehaviour
     }
     private void OnEnable()
     {
-        controls.Enable();
+        if (controls != null) controls.Enable();
 
     }
     private void OnDisable()
     {
-        controls.Disable();
+        if (controls != null) controls.Disable();
     }
 
 

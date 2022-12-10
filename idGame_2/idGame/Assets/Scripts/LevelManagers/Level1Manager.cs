@@ -7,6 +7,8 @@ using ProjectUtils;
 public class Level1Manager : MonoBehaviour
 {
     public UnityEvent AfterLevel2Load;
+    public static bool LevelTransition;
+    public void SetLevelTransition(bool value) => LevelTransition = value;
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -24,7 +26,7 @@ public class Level1Manager : MonoBehaviour
     public void LoadLevel2() => ChangeSceneUI.ChangeSceneAdditive("Level 2", null, () => { AfterLevel2Load.Invoke(); });
     public void OnMonsterAppear()
     {
-        ObjectivesUI.CompleteObjective("1", () =>{ObjectivesUI.AddObjective("2", "Escape the beast");});
+        ObjectivesUI.CompleteObjective("1", () => { ObjectivesUI.AddObjective("2", "Escape the beast"); });
     }
 
 }

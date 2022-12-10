@@ -28,20 +28,26 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
     public static bool ControlEnabled = true;
     #endregion
-    private void Awake()
+    private void Start()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         controls = new InputMaster();
+        controls.Enable();
         controller = GetComponent<CharacterController>();
         items = GetComponentsInChildren<ItemInHand>(true);
     }
     private void OnEnable()
     {
-        controls.Enable();
+        if (controls != null) controls.Enable();
     }
     private void OnDisable()
     {
-        controls.Disable();
+        if (controls != null) controls.Disable();
     }
     public static void SetControl(bool value) => ControlEnabled = value;
 
