@@ -15,3 +15,5 @@ MonoBehaviour:
   list:
   - id: box_damaged
     clip: {fileID: 8300000, guid: 8aed858c9ca501743b015c229be9f41f, type: 3}
+  - id: mine
+    clip: {fileID: 8300000, guid: 510468e72d5521844864fc888938ee65, type: 3}

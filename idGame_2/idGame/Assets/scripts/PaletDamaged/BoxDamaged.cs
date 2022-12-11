@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoxDamaged : MonoBehaviour
 {
     [SerializeField] private string targetTag = "Tool Axe";
+    [SerializeField] private string soundId = "box_damaged";
     [SerializeField] private Texture2D damaged_1;
     [SerializeField] private Texture2D damaged_2;
     [SerializeField] private ItemData itemData;
@@ -35,7 +36,7 @@ public class BoxDamaged : MonoBehaviour
                 if (itemData != null)
                     Inventory.Add(itemData);
             }
-            SoundManager.PlayOneShot("box_damaged", 0.5f);
+            SoundManager.PlayOneShot(soundId, 0.5f);
         }
         else
         {

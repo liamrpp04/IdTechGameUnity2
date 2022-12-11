@@ -11,7 +11,7 @@ public class ObjectivesUI : MonoBehaviour
     [SerializeField] private RectTransform content;
     [SerializeField] private TextMeshProUGUI textRef;
     private Dictionary<string, TextMeshProUGUI> objectives = new Dictionary<string, TextMeshProUGUI>();
-
+    private static List<string> trashData = new List<string>();
     private void Awake()
     {
         Instance = this;
@@ -28,6 +28,18 @@ public class ObjectivesUI : MonoBehaviour
     public static void CompleteObjective(string id) => Instance._CompleteObjective(id, null);
     public static void Clear() => Instance._Clear();
 
+    public static void AddToTrash(string data)
+    {
+        if (!trashData.Contains(data)) trashData.Add(data);
+    }
+
+    public static void RemoveFromTrash(string data)
+    {
+        if (trashData.Contains(data)) trashData.Remove(data);
+    }
+
+    public static void ClearTrash() => trashData.Clear();
+
     public void _Show(Action OnComplete = null)
     {
         content.DOAnchorPosX(30, 0.65f).OnComplete(() => OnComplete?.Invoke());
@@ -43,8 +55,9 @@ public class ObjectivesUI : MonoBehaviour
     public void _AddObjective(string id, string text)
     {
         if (objectives.ContainsKey(id)) return;
+        if (trashData.Contains(id)) return;
         var newTask = Instantiate(textRef, content);
-        newTask.text = "* "+ text;
+        newTask.text = "* " + text;
         newTask.gameObject.SetActive(true);
         newTask.color = Color.black;
         newTask.alpha = 0;

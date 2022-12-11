@@ -9,7 +9,7 @@ public class GamplayInvetory : MonoBehaviour
     public static GamplayInvetory Instance;
     #region Private vals
     private int selectedIndex = 0;
-
+    InputMaster master;
     #endregion
     #region SerializeFielded vals
     [SerializeField] List<SlotUI> slots = new List<SlotUI>();
@@ -18,12 +18,16 @@ public class GamplayInvetory : MonoBehaviour
     #region Public vals
 
     #endregion
-    private void Start()
+    private void Awake()
     {
         Instance = this;
         slots[selectedIndex].Select();
-
+        master = new InputMaster();
+        master.Enable();
     }
+
+    private void OnEnable() =>master.Enable();
+    private void OnDisable() => master.Disable();
 
     private void Update()
     {
@@ -39,6 +43,21 @@ public class GamplayInvetory : MonoBehaviour
             Select(selectedIndex + 1);
 
         }
+
+        SelectByNumbers();
+    }
+
+    void SelectByNumbers()
+    {
+        if (master.Inventory.P1.WasPressedThisFrame()) Select(0);
+        if (master.Inventory.P2.WasPressedThisFrame()) Select(1);
+        if (master.Inventory.P3.WasPressedThisFrame()) Select(2);
+        if (master.Inventory.P4.WasPressedThisFrame()) Select(3);
+        if (master.Inventory.P5.WasPressedThisFrame()) Select(4);
+        if (master.Inventory.P6.WasPressedThisFrame()) Select(5);
+        if (master.Inventory.P7.WasPressedThisFrame()) Select(6);
+        if (master.Inventory.P8.WasPressedThisFrame()) Select(7);
+        if (master.Inventory.P9.WasPressedThisFrame()) Select(8);
     }
 
     public void Select(int targetIndex)

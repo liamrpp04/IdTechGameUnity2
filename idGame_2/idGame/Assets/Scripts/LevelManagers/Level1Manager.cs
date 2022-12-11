@@ -15,14 +15,23 @@ public class Level1Manager : MonoBehaviour
     }
     void Start()
     {
-        this.ActionAfterTime(2f, () =>
+        //this.ActionAfterTime(1.2f, () =>
+        //{
+        //    ObjectivesUI.Show(() =>
+        //    {
+        //        ObjectivesUI.AddObjective("1", "Get out the zone");
+        //    });
+        //});
+    }
+
+    public void FirstObjective()
+    {
+        ObjectivesUI.Show(() =>
         {
-            ObjectivesUI.Show(() =>
-            {
-                ObjectivesUI.AddObjective("1", "Investigate the zone");
-            });
+            ObjectivesUI.AddObjective("1", "Get out the zone");
         });
     }
+
     public void LoadLevel2() => ChangeSceneUI.ChangeSceneAdditive("Level 2", null, () => { AfterLevel2Load.Invoke(); });
     public void OnMonsterAppear()
     {

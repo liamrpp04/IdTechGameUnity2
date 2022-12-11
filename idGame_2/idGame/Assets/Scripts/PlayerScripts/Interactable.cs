@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour
     {
         if (itemRequired == null || amountRequired == 0)
         {
-            OnSuccess?.Invoke();
+            SuccessInteraction();
             return;
         }
 
@@ -31,9 +31,8 @@ public class Interactable : MonoBehaviour
         if (inventoryItem.stackSize >= amountRequired)
         {
             Inventory.Remove(itemRequired, amountRequired);
-            OnSuccess?.Invoke();
+            SuccessInteraction();
             //
-            gameObject.SetActive(false);
         }
         else
         {
@@ -45,5 +44,16 @@ public class Interactable : MonoBehaviour
     {
         ShortPopupUI.ShowFailedInteraction(this);
         OnFailed?.Invoke();
+    }
+
+    void SuccessInteraction()
+    {
+        OnSuccess?.Invoke();
+        Clear();
+    }
+
+    private void Clear()
+    {
+        gameObject.layer = 0;
     }
 }

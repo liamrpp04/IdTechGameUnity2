@@ -17,11 +17,11 @@ public class PauseUI : MonoBehaviour
     [SerializeField] private Button btnMainMenu;
     [SerializeField] private Button btnExit;
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         Initialize();
-        Hide();
+        Hide(false);
     }
 
     void Initialize()
@@ -50,22 +50,34 @@ public class PauseUI : MonoBehaviour
         });
         btnExit.onClick.AddListener(Application.Quit);
     }
-
+    static bool wasControlDisabled = false;
     public static void Show()
     {
         IsShown = true;
         Instance.canvas.enabled = true;
         Time.timeScale = 0;
-        PlayerController.ControlEnabled = false;
+
+        if (!PlayerController.ControlEnabled)
+            wasControlDisabled = true;
+        else
+            PlayerController.ControlEnabled = false;
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-    public static void Hide()
+    public static void Hide(bool checkControl = true)
     {
         IsShown = false;
         Time.timeScale = 1;
         Instance.canvas.enabled = false;
-        PlayerController.ControlEnabled = true;
+        if (checkControl)
+        {
+            if (wasControlDisabled)
+                wasControlDisabled = false;
+            else
+                PlayerController.ControlEnabled = true;
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 

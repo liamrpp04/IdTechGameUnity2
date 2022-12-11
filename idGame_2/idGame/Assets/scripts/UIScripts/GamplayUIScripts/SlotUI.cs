@@ -47,6 +47,7 @@ public class SlotUI : MonoBehaviour
         itemIcon.color = Color.white;
         isSlotEmpty = true;
         Item = null;
+        numTxt.text = "";
         if (isSelected) CheckTool();
     }
 
