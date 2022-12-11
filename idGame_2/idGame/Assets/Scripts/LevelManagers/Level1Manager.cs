@@ -6,8 +6,14 @@ using ProjectUtils;
 
 public class Level1Manager : MonoBehaviour
 {
+    #region Private vals
+    #endregion
+    #region SerializeFielded vals
+    #endregion
+    #region Public vals
     public UnityEvent AfterLevel2Load;
     public static bool LevelTransition;
+    #endregion
     public void SetLevelTransition(bool value) => LevelTransition = value;
     private void Awake()
     {
@@ -37,5 +43,8 @@ public class Level1Manager : MonoBehaviour
     {
         ObjectivesUI.CompleteObjective("1", () => { ObjectivesUI.AddObjective("2", "Escape the beast"); });
     }
-
+    public static void TeleportMonsterActivation()
+    {
+        Level2Manager.TeleportMonster();
+    }
 }

@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class InventoryItem
 {
+    #region Private vals
+    #endregion
+    #region SerializeFielded vals
+    #endregion
+    #region Public vals
     public ItemData data { get; private set; }
     public int stackSize { get; private set; }
+    #endregion
+
 
     public InventoryItem(ItemData item)
     {

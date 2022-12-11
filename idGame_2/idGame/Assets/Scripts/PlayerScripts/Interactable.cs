@@ -8,12 +8,18 @@ public class Interactable : MonoBehaviour
     public string description;
     public ItemData itemRequired;
     public int amountRequired = 1;
+    public bool devMode = false;
 
     [SerializeField] private UnityEvent OnSuccess;
     [SerializeField] private UnityEvent OnFailed;
 
     public void Evaluate(ItemInHand itemInHand)
     {
+        if (devMode)
+        {
+            SuccessInteraction();
+            return;
+        }
         if (itemRequired == null || amountRequired == 0)
         {
             SuccessInteraction();

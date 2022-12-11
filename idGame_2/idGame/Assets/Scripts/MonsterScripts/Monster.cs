@@ -2,12 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class Monster : MonoBehaviour
 {
+    #region Private vals
+    #endregion
+    #region SerializeFielded vals
     [SerializeField] private Transform target;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator anim;
+    #endregion
+    #region Public vals
+    public static Monster Instance;
+    #endregion
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this; 
+    }
+
 
     private void Update()
     {

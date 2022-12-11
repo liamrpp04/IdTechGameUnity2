@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,13 +53,11 @@
     <UnityVersion>2021.2.7f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\packages\ReachableGames\PostLinerFree\PostLinerRenderer.cs" />
     <Compile Include="Assets\Scripts\PaletDamaged\PaletDamaged.cs" />
     <Compile Include="Assets\packages\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_CustomWind.cs" />
     <Compile Include="Assets\Scripts\MonsterScripts\Monster.cs" />
+    <Compile Include="Assets\Scripts\ProjectUtils\InvokeAtStart.cs" />
     <Compile Include="Assets\packages\ReachableGames\PostLinerFree\PostLinerFree.cs" />
     <Compile Include="Assets\packages\ReachableGames\PostLinerFree\testScenes\CheesyHeadTracking.cs" />
     <Compile Include="Assets\Scripts\ProjectUtils\TriggerDetector.cs" />
@@ -89,6 +87,7 @@
     <Compile Include="Assets\input actions\inputActionsSripts\InputMaster.cs" />
     <Compile Include="Assets\Scripts\LevelManagers\Level2Manager.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\ProjectUtils\MoveObject.cs" />
     <Compile Include="Assets\Scripts\ProjectUtils\OnObjectEnabled.cs" />
     <Compile Include="Assets\packages\ReachableGames\PostLinerFree\PostLinerOutline.cs" />
     <Compile Include="Assets\packages\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
