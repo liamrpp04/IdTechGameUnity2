@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
-
+using DG.Tweening;
 
 public class SlotUI : MonoBehaviour
 {
@@ -18,6 +18,7 @@ public class SlotUI : MonoBehaviour
     #region SerializeFielded vals
     [SerializeField] Image itemIcon;
     [SerializeField] TMP_Text numTxt;
+    [SerializeField] TMP_Text txtItemName;
     //[SerializeField] Color selectedColor;
     //[SerializeField] Color defaultColor;
     #endregion
@@ -28,6 +29,8 @@ public class SlotUI : MonoBehaviour
     private void Start()
     {
         GetComponent<Button>().onClick.AddListener(() => GamplayInvetory.Instance.Select(this));
+        txtItemName.alpha = 0;
+        txtItemName.text = "";
     }
 
     public void ShowItemIcon(InventoryItem itemData)
@@ -37,6 +40,7 @@ public class SlotUI : MonoBehaviour
         itemIcon.color = itemData.data.itemColor;
         isSlotEmpty = false;
         Item = itemData;
+        //txtItemName.text = itemData.data.itemName;
         if (isSelected) CheckTool();
     }
 
@@ -55,6 +59,15 @@ public class SlotUI : MonoBehaviour
     {
         GetComponent<Image>().color = selectedColor;
         transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        if (Item != null)
+        {
+            txtItemName.text = Item.data.itemName;
+            txtItemName.DOFade(1, 0.4f).OnComplete(() =>
+            {
+                txtItemName.DOFade(0, 0.4f);
+            });
+        }
+
         isSelected = true;
         CheckTool();
     }

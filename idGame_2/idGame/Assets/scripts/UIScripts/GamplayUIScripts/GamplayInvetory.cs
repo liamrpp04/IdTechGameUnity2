@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static GamplayInvetory.IData;
 
 public class GamplayInvetory : MonoBehaviour
 {
     public static GamplayInvetory Instance;
+    public static IData SavedInventory;
     #region Private vals
     private int selectedIndex = 0;
     InputMaster master;
@@ -20,13 +22,82 @@ public class GamplayInvetory : MonoBehaviour
     #endregion
     private void Awake()
     {
+        if (SavedInventory != null)
+        {
+            Fill(SavedInventory);
+        }
         Instance = this;
-        slots[selectedIndex].Select();
         master = new InputMaster();
         master.Enable();
     }
 
-    private void OnEnable() =>master.Enable();
+    private void Start()
+    {
+        slots[selectedIndex].Select();
+    }
+
+    public class IData
+    {
+        //public Dictionary<ItemData, InventoryItem> itemsBackend = new Dictionary<ItemData, InventoryItem>();
+
+        public List<ISlotData> data = new List<ISlotData>();
+        public int selectedIndex;
+
+        public class ISlotData
+        {
+            public bool isEmpty;
+            public InventoryItem item;
+            public ItemData itemData;
+            public int stackSize;
+        }
+
+        public IData(GamplayInvetory inventoryUI)
+        {
+            selectedIndex = inventoryUI.selectedIndex;
+            //itemsBackend = new Dictionary<ItemData, InventoryItem>(Inventory.items);
+            for (int i = 0; i < inventoryUI.slots.Count; i++)
+            {
+                SlotUI slot = inventoryUI.slots[i];
+                ISlotData sData = new ISlotData();
+                sData.isEmpty = slot.isSlotEmpty;
+                if (!sData.isEmpty)
+                {
+                    sData.item = slot.Item; sData.itemData = slot.Item.data; sData.stackSize = slot.Item.stackSize;
+                }
+                data.Add(sData);
+            }
+        }
+    }
+
+    public static void SaveI()
+    {
+        SavedInventory = new IData(Instance);
+    }
+    public static void ClearI()
+    {
+        SavedInventory = null;
+    }
+    void Fill(IData data)
+    {
+        Inventory.items.Clear();
+        //Inventory.items = data.itemsBackend;
+        for (int i = 0; i < slots.Count; i++)
+        {
+            SlotUI slot = slots[i];
+            ISlotData i_slot = data.data[i];
+
+            if (!i_slot.isEmpty)
+            {
+
+                InventoryItem item = Inventory.Add_Backend(i_slot.itemData, i_slot.stackSize);
+                slot.ShowItemIcon(item);
+                slot.UpdateStackText();
+            }
+        }
+        selectedIndex = data.selectedIndex;
+    }
+
+    private void OnEnable() => master.Enable();
     private void OnDisable() => master.Disable();
 
     private void Update()

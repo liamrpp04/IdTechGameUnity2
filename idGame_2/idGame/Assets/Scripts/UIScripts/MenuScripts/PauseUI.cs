@@ -19,6 +19,12 @@ public class PauseUI : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
         Initialize();
         Hide(false);
@@ -81,7 +87,8 @@ public class PauseUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        OptionsUI.Hide();
-        ControlsUI.Hide();
+        if (OptionsUI.Instance != null) OptionsUI.Hide();
+
+        if(ControlsUI.Instance != null) ControlsUI.Hide();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using ProjectUtils;
 
 public class Monster : MonoBehaviour
 {
@@ -16,19 +17,32 @@ public class Monster : MonoBehaviour
     #region Public vals
     public static Monster Instance;
     #endregion
-    private void Awake()
-    {
-        if(Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this; 
-    }
+    //private void Awake()
+    //{
+    //    if (Instance != null)
+    //    {
+    //        Destroy(gameObject);
+    //        return;
+    //    }
+    //    Instance = this;
+    //}
 
+    public void ForcePosition(Vector3 position)
+    {
+        //agent.ResetPath();
+        agent.enabled = false;
+        transform.position = position;
+        this.ActionAfterReturnedNull(() =>
+        {
+            agent.enabled = true;
+        });
+    }
 
     private void Update()
     {
+        if (!PlayerController.ControlEnabled) return;
+        if (!agent.enabled) return;
+
         float distToTarget = Vector3.Distance(transform.position, target.position);
         if (distToTarget < 2.5f)
         {

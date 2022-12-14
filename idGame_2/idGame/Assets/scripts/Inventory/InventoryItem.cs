@@ -10,7 +10,7 @@ public class InventoryItem
     #endregion
     #region Public vals
     public ItemData data { get; private set; }
-    public int stackSize { get; private set; }
+    public int stackSize { get; set; }
     #endregion
 
 

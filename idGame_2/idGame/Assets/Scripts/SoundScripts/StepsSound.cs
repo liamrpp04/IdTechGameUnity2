@@ -15,7 +15,10 @@ public class StepsSound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Instance != null) return;
+        if (Instance != null) {
+            Instance.gameObject.SetActive(false);
+        }
+        //return;
         source = GetComponent<AudioSource>();
         Instance = this;
         //PlaySteps(1);

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Tool PickAxe
+  soundId: mine
   damaged_1: {fileID: 2800000, guid: 1878e996e3f97c2499cd8f933c72ec3a, type: 3}
   damaged_2: {fileID: 2800000, guid: 59bf495f57c2dc94b981210a82be402c, type: 3}
   itemData: {fileID: 11400000, guid: be539fcca4c1c0e4599b38723855a3c5, type: 2}
@@ -113,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.092746, y: 1.2120254, z: 0.7967419}
-  m_Center: {x: -0.008567482, y: 0.0042232582, z: 0.045877036}
+  m_Size: {x: 1.092746, y: 1.2120254, z: 0.7823365}
+  m_Center: {x: -0.008567452, y: 0.004223287, z: 0.038674265}
 --- !u!65 &7509310140466589074
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126,5 +127,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.092746, y: 1.2120254, z: 0.7967419}
-  m_Center: {x: -0.008567482, y: 0.0042232582, z: 0.045877036}
+  m_Size: {x: 1.092746, y: 1.2120254, z: 1.0521812}
+  m_Center: {x: -0.008567452, y: 0.004223287, z: 0.1735967}

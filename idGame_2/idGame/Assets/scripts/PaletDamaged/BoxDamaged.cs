@@ -34,7 +34,10 @@ public class BoxDamaged : MonoBehaviour
             {
                 Destroy(gameObject);
                 if (itemData != null)
+                {
                     Inventory.Add(itemData);
+                    ShortPopupUI.Show($"{itemData.itemName} obtained");
+                }
             }
             SoundManager.PlayOneShot(soundId, 0.5f);
         }

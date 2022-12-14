@@ -23,7 +23,8 @@ public class MouseLook : MonoBehaviour
     {
         if (Instance != null)
         {
-            return;
+            Instance.gameObject.SetActive(false);
+            //return;
         }
         Instance = this;
         controls = new InputMaster();
@@ -39,7 +40,7 @@ public class MouseLook : MonoBehaviour
         this.ActionAfterTime(shakeTime, StopShake);
     }
     public void StopShake() => camAnim.SetBool("Shaking", false);
-
+    public void Die() => camAnim.SetTrigger("Die");
     private void Update()
     {
         if (!PlayerController.ControlEnabled) return;

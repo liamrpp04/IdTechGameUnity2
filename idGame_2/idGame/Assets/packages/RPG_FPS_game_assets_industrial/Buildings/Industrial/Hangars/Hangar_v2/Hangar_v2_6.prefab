@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4000011394009582}
   - component: {fileID: 33000010444884772}
   - component: {fileID: 23000011610948646}
-  m_Layer: 0
+  - component: {fileID: 1859189851}
+  m_Layer: 3
   m_Name: Hangar_v2_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000011394009582
 Transform:
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000010249220760}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -88,6 +89,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1859189851
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010249220760}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: d38c6eb5eac83874ca4e1361ff5ff63c, type: 3}
 --- !u!1 &1000010869344934
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,12 +114,13 @@ GameObject:
   - component: {fileID: 4000012667116448}
   - component: {fileID: 33000012078605066}
   - component: {fileID: 23000010877820564}
-  m_Layer: 0
+  - component: {fileID: 454834748}
+  m_Layer: 3
   m_Name: Hangar_v2_6_supports
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000012667116448
 Transform:
@@ -171,6 +187,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &454834748
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010869344934}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: d38c6eb5eac83874ca4e1361ff5ff63c, type: 3}
 --- !u!1 &1000011198025078
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,12 +212,13 @@ GameObject:
   - component: {fileID: 4000011270217810}
   - component: {fileID: 33000013900247842}
   - component: {fileID: 23000011608946296}
-  m_Layer: 0
+  - component: {fileID: 1994117109}
+  m_Layer: 3
   m_Name: Hangar_v2_6_door1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000011270217810
 Transform:
@@ -254,6 +285,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1994117109
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011198025078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300006, guid: d38c6eb5eac83874ca4e1361ff5ff63c, type: 3}
 --- !u!1 &1000012805303146
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,12 +310,13 @@ GameObject:
   - component: {fileID: 4000012826307164}
   - component: {fileID: 33000010047357014}
   - component: {fileID: 23000014179686784}
-  m_Layer: 0
+  - component: {fileID: 208464322}
+  m_Layer: 3
   m_Name: Hangar_v2_6_gate1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000012826307164
 Transform:
@@ -337,6 +383,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &208464322
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012805303146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: d38c6eb5eac83874ca4e1361ff5ff63c, type: 3}
 --- !u!1 &1000014188284424
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,13 +408,13 @@ GameObject:
   - component: {fileID: 4000013086714930}
   - component: {fileID: 33000013076939342}
   - component: {fileID: 23000010372870322}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hangar_v2_6_gate2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 0
 --- !u!4 &4000013086714930
 Transform:
   m_ObjectHideFlags: 0
@@ -431,12 +491,13 @@ GameObject:
   - component: {fileID: 4000010267013564}
   - component: {fileID: 33000010092581644}
   - component: {fileID: 23000012872808408}
-  m_Layer: 0
+  - component: {fileID: 912645840}
+  m_Layer: 3
   m_Name: Hangar_v2_6_inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000010267013564
 Transform:
@@ -503,3 +564,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &912645840
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014221404478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300012, guid: d38c6eb5eac83874ca4e1361ff5ff63c, type: 3}

@@ -12,6 +12,11 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
     }
 
@@ -28,4 +33,6 @@ public class SoundManager : MonoBehaviour
         Instance.OneShotSource.volume = volume;
         Instance.OneShotSource.PlayOneShot(clip);
     }
+
+    public static void PlayOneShot(string id) => PlayOneShot(id, 1);
 }

@@ -11,6 +11,7 @@ public class PlayerStateUI : MonoBehaviour
     public static PlayerStateUI Instance;
     [SerializeField] private float startLife = 10;
     [SerializeField] private Image render;
+    [SerializeField] private Slider slider;
     float _life;
     bool _critical;
     bool _damageAllowed = true;
@@ -19,33 +20,49 @@ public class PlayerStateUI : MonoBehaviour
     {
         Instance = this;
         _life = startLife;
+        slider.maxValue = startLife;
+        slider.value = startLife;
     }
 
     public void RecoverLife(float amount = 1f)
     {
         _life += amount;
         if (_life > startLife) _life = startLife;
+        SoundManager.PlayOneShot("recover");
 
         DoRender(Color.green, CalculateRenderStrength(amount), () => SetState(CalculateCritic()));
-
+        slider.DOValue(_life, 0.3f);
     }
 
     public void TakeDamage(float amount = 1f)
     {
         if (!PlayerController.ControlEnabled) return;
         if (!_damageAllowed) return;
+        SoundManager.PlayOneShot("damage");
         _damageAllowed = false;
         MouseLook.Instance.Shake();
-        this.ActionAfterTime(0.7f, () => _damageAllowed = true);
+        this.ActionAfterTime(0.5f, () => _damageAllowed = true);
 
         _life -= amount;
+
         if (_life <= 0)
         {
+            _life = 0;
             Debug.Log("Dead");
-            return;
+            PlayerController.SetControl(false);
+            MouseLook.Instance.Die();
+            this.ActionAfterTime(1f, () =>
+            {
+                string target = "Level 1";
+                if (!Level1Manager.RespawnOnLevel1) target = "Level 2";
+                ChangeSceneUI.ChangeScene(target, () =>
+                {
+                    PlayerController.SetControl(true);
+                });
+            });
         }
+        slider.DOValue(_life, 0.3f);
         DoRender(Color.red, CalculateRenderStrength(amount), () => SetState(CalculateCritic()));
-
     }
 
     float CalculateRenderStrength(float amount) => Mathf.InverseLerp(0, startLife / 8, amount);

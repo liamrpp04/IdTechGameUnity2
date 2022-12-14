@@ -5,7 +5,6 @@ public class PlayerController : MonoBehaviour
 {
 
     #region Private vals
-    private InputMaster controls;
     private Vector3 velocity;
     private Vector2 move;
     private CharacterController controller;
@@ -22,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Range(-1000, 1000)] private float publicErrorMargin = 6f;
     #endregion
     #region Public vals
+    public InputMaster controls;
     public Transform groundCheck;
     public float distanceToGround = 0.4f;
     public LayerMask groundMask;
@@ -32,8 +32,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Instance != null)
         {
-            Destroy(gameObject);
-            return;
+            Instance.gameObject.SetActive(false);
+            //Destroy(gameObject);
+            //return;
         }
         Instance = this;
         controls = new InputMaster();

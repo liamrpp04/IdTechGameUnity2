@@ -23,6 +23,24 @@ public class Inventory
         }
     }
 
+    public static InventoryItem Add_Backend(ItemData itemData, int stackSize = 1)
+    {
+        if (items.TryGetValue(itemData, out InventoryItem item))
+        {
+            if (!itemData.isStackable) return item;
+
+            item.AddToStack(stackSize);
+            return item;
+        }
+        else
+        {
+            InventoryItem newItem = new InventoryItem(itemData);
+            newItem.stackSize = stackSize;
+            items.Add(itemData, newItem);           
+            return newItem;
+        }
+    }
+
     public static void Remove(ItemData itemData, int amount = 1)
     {
         if (amount <= 0) return;

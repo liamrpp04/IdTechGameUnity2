@@ -63,6 +63,7 @@ public class ChangeSceneUI : MonoBehaviour
             OnCompleteFade?.Invoke();
             SceneManager.LoadScene(sceneName,LoadSceneMode.Additive);
             afterSceneLoad?.Invoke();
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         });
     }
 }

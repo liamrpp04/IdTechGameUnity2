@@ -23,7 +23,7 @@ public class ShortPopupUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public static void ShowFailedInteraction(Interactable interactable)
+    public static void ShowFailedInteraction(InteractableObject interactable)
     {
         string itemName = interactable.itemRequired.itemName;
         int amount = interactable.amountRequired;
@@ -54,7 +54,7 @@ public class ShortPopupUI : MonoBehaviour
         canvasGroup.DOFade(1, 0.5f);
         rect.DOAnchorPosY(-50, 0.5f).OnComplete(() =>
         {
-            canvasGroup.DOFade(0, 0.5f).SetDelay(0.6f).OnComplete(() =>
+            canvasGroup.DOFade(0, 0.5f).SetDelay(0.85f).OnComplete(() =>
             {
                 isPlaying = false;
                 gameObject.SetActive(false);
