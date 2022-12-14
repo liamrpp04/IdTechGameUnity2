@@ -38,9 +38,14 @@ public class InteractableSpeaker : Interactable
     //[SerializeField] private UnityEvent OnSuccess;
     //[SerializeField] private UnityEvent OnFailed;
     [SerializeField] private ItemData rewardItem;
-
+    [SerializeField] private bool showInstruction = false;
     public override void Evaluate(ItemInHand itemInHand)
     {
+        if (showInstruction)
+        {
+            ShortPopupUI.Show("Press Space to continue the conversation");
+            showInstruction = false;
+        }
         PlayerController.SetControl(false);
         SoundManager.PlayOneShot("greet", 0.65f);
 

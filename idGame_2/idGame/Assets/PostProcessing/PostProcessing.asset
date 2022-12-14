@@ -1419,10 +1419,10 @@ MonoBehaviour:
     value: 1
   outlineColor:
     overrideState: 1
-    value: {r: 0.23563726, g: 1, b: 0.19245279, a: 1}
+    value: {r: 0.19985345, g: 1, b: 0.15471691, a: 1}
   finalBlend:
     overrideState: 1
-    value: 0.8
+    value: 0.7
 --- !u!114 &2677621675187022622
 MonoBehaviour:
   m_ObjectHideFlags: 3

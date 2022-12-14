@@ -44,7 +44,7 @@ public class ShortPopupUI : MonoBehaviour
     private void _Show(string message)
     {
         if (isPlaying) return;
-
+        DOTween.Kill(canvasGroup);
         isPlaying = true;
 
         ResetUI();
@@ -54,10 +54,11 @@ public class ShortPopupUI : MonoBehaviour
         canvasGroup.DOFade(1, 0.5f);
         rect.DOAnchorPosY(-50, 0.5f).OnComplete(() =>
         {
+            isPlaying = false;
             canvasGroup.DOFade(0, 0.5f).SetDelay(0.85f).OnComplete(() =>
             {
-                isPlaying = false;
-                gameObject.SetActive(false);
+                if (!isPlaying)
+                    gameObject.SetActive(false);
             });
         });
     }
