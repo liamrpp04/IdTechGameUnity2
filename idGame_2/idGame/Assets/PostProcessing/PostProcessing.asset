@@ -1413,16 +1413,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76325b82309654f4ea6230cd059469e7, type: 3}
   m_Name: PostLinerFree
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   outlineColor:
     overrideState: 1
-    value: {r: 0.20814298, g: 1, b: 0.1641509, a: 1}
+    value: {r: 0.23563726, g: 1, b: 0.19245279, a: 1}
   finalBlend:
     overrideState: 1
-    value: 1
+    value: 0.8
 --- !u!114 &2677621675187022622
 MonoBehaviour:
   m_ObjectHideFlags: 3

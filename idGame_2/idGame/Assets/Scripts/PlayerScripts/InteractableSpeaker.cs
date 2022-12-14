@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using ProjectUtils;
 using UnityEngine.Events;
+using ReachableGames.PostLinerFree;
+
 public class InteractableSpeaker : Interactable
 {
     [System.Serializable]
@@ -41,11 +43,17 @@ public class InteractableSpeaker : Interactable
     {
         PlayerController.SetControl(false);
         SoundManager.PlayOneShot("greet", 0.65f);
+
+        PostLinerOutline outline = GetComponent<PostLinerOutline>();
         switch (state)
         {
             case State.Default:
+                if (outline != null) outline.enabled = false;
+
                 DialogUI.Show(title, FirstDialogs.dialogs, () =>
                 {
+                    if (outline != null) outline.enabled = true;
+
                     FirstDialogs.OnCompleted?.Invoke();
                     this.ActionAfterReturnedNull(() =>
                     {
@@ -56,6 +64,8 @@ public class InteractableSpeaker : Interactable
                 break;
             case State.Waiting:
 #if UNITY_EDITOR
+                if (outline != null) outline.enabled = false;
+
                 if (devMode)
                 {
                     SuccessInteraction();
@@ -106,6 +116,10 @@ public class InteractableSpeaker : Interactable
             this.ActionAfterReturnedNull(() =>
             {
                 PlayerController.SetControl(true);
+
+                PostLinerOutline outline = GetComponent<PostLinerOutline>();
+                if (outline != null) outline.enabled = true;
+
             });
         });
     }
@@ -119,6 +133,9 @@ public class InteractableSpeaker : Interactable
             this.ActionAfterReturnedNull(() =>
             {
                 PlayerController.SetControl(true);
+
+                //PostLinerOutline outline = GetComponent<PostLinerOutline>();
+                //if (outline != null) outline.enabled = true;
             });
             state = State.Finished;
 

@@ -14,8 +14,6 @@ public class MainMenuUI : MonoBehaviour
     void Start()
     {
         Initialize();
-        GamplayInvetory.ClearI();
-        Inventory.items.Clear();
     }
 
     void Initialize()

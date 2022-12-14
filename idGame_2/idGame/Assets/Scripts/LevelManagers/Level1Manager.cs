@@ -26,6 +26,9 @@ public class Level1Manager : MonoBehaviour
     void Start()
     {
         RespawnOnLevel1 = true;
+        Inventory.items.Clear();
+        GamplayInvetory.ClearI();
+
         //this.ActionAfterTime(1.2f, () =>
         //{
         //    ObjectivesUI.Show(() =>
