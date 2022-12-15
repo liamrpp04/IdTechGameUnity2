@@ -13,19 +13,11 @@ public class Monster : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator anim;
+    [SerializeField] private float seperationDistanceForMonnster = 2.5f;
     #endregion
     #region Public vals
     public static Monster Instance;
     #endregion
-    //private void Awake()
-    //{
-    //    if (Instance != null)
-    //    {
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-    //    Instance = this;
-    //}
 
     public void ForcePosition(Vector3 position)
     {
@@ -44,7 +36,7 @@ public class Monster : MonoBehaviour
         if (!agent.enabled) return;
 
         float distToTarget = Vector3.Distance(transform.position, target.position);
-        if (distToTarget < 2.5f)
+        if (distToTarget < seperationDistanceForMonnster)
         {
             agent.isStopped = true;
             // ToolAnimation
