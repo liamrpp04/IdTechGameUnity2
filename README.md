@@ -18,3 +18,9 @@
   - Goal text of your next objective
   - time limit
 ## preview
+sorry for the quality you should play it for thge best jugements
+
+
+https://user-images.githubusercontent.com/114768536/208261052-dcc4b05c-6b30-4d72-90ff-a4d76781ebc4.mp4
+
+
