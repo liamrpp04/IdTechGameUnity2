@@ -19,6 +19,7 @@
   - time limit
 ## preview
 sorry for the quality you should play it for thge best jugements
+thats not how the game looks its a lot better its just the i had to compress the video 
 
 
 https://user-images.githubusercontent.com/114768536/208261052-dcc4b05c-6b30-4d72-90ff-a4d76781ebc4.mp4
